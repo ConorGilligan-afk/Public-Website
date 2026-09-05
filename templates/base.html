@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}JRF Corp | Excavation & Site Contractors | West Roxbury, MA{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}West Roxbury, MA excavation contractor. Site development, foundations, retaining walls, water & sewer installations, and more.{% endblock %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'jrfstyle.css' %}?v=1.6">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="contactline">
+      <a href="tel:+16175550148">617 555 0148</a>
+      <a href="mailto:info@jrfcorporation.com">info@jrfcorporation.com</a>
+    </div>
+    <div class="emergency">Emergency Utility Line</div>
+  </div>
+</div>
+
+<header class="main">
+  <div class="wrap nav">
+    <a href="{% url 'home' %}" class="logo">JRF <span>Corp</span></a>
+    <nav class="links">
+      <a href="{% url 'home' %}#services">Services</a>
+      <a href="{% url 'home' %}#why">Why Us</a>
+      <a href="{% url 'home' %}#cities">Areas We Serve</a>
+      <a href="{% url 'post_list' %}">Blog</a>
+      <a href="{% url 'home' %}#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="{% url 'home' %}#contact">Get a Free Quote</a>
+  </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:#fff; margin-bottom:12px;">JRF <span>Corp</span></div>
+        <p>Excavation and site work contractors based in West Roxbury, MA, serving Greater Boston.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="{% url 'home' %}#services">Storm Drainage</a></li>
+          <li><a href="{% url 'home' %}#services">Foundations</a></li>
+          <li><a href="{% url 'home' %}#services">Retaining Walls</a></li>
+          <li><a href="{% url 'home' %}#services">Water &amp; Sewer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="{% url 'home' %}#why">Why Us</a></li>
+          <li><a href="{% url 'home' %}#cities">Areas We Serve</a></li>
+          <li><a href="{% url 'home' %}#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>617 555 0148</li>
+          <li>info@jrfcorporation.com</li>
+          <li>West Roxbury, MA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 JRF Corp. All rights reserved.</div>
+      <div>Licensed &amp; Insured in Massachusetts</div>
+    </div>
+  </div>
+</footer>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JRF Corporation{% endblock %}
+{% block meta_description %}Boston, MA excavation contractor. Site development, foundations, retaining walls, water & sewer installations, and more.{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<section class="hero">
+  <div class="hero-video-wrap">
+    <video class="hero-video" autoplay muted loop playsinline poster="{% static 'images/hero-poster.jpg' %}">
+      <source src="{% static 'videos/hero.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-text-panel">
+      <div class="hero-eyebrow">Boston, Massachusetts</div>
+      <h1>Excavation and site work built to <em>last</em>, not just pass inspection</h1>
+      <p class="lead">JRF Corp handles the excavation, foundation, and utility work that everything else in your project depends on, for contractors and homeowners across Greater Boston.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Get a Free Quote</a>
+        <a class="btn-outline" href="#services">Our Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">Licensed</div><div class="label">&amp; insured in MA</div></div>
+    <div class="stat"><div class="num">32</div><div class="label">Years in Business</div></div>
+    <div class="stat"><div class="num">9</div><div class="label">Core service lines</div></div>
+    <div class="stat"><div class="num">Greater Boston</div><div class="label">Service area</div></div>
+  </div>
+</div>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Why choose us</div>
+      <h2>Site work you don't have to think about twice</h2>
+      <p>We handle the part of the project that has to be right before anything else can be built.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Direct communication</h3>
+        <p>You talk to the person running the job, not a call center. We scope it, quote it straight, and keep you posted while it's underway.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Experienced crews</h3>
+        <p>Our operators and site crews handle the equipment and conditions this work actually requires, from ledge to soft soil.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Safety first</h3>
+        <p>Every site runs to strict safety standards, for our crew and everyone around the jobsite while work is underway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What we do</div>
+      <h2>Full-service excavation and sitework</h2>
+      <p>From breaking ground to tying in utilities, here's what we cover.</p>
+    </div>
+    <div class="service-grid">
+
+      <a class="service-tile" href="{% url 'service_detail' slug='storm-drainage' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h16M6 10v10M18 10v10M9 14v6M15 14v6"/><circle cx="4" cy="7" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>
+        <h3>Storm Drainage</h3>
+        <p>Catch basins, culverts, and drainage systems that move water off your site.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='helical-pile-installation' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M8 6l4-4 4 4M9 20h6"/></svg>
+        <h3>Helical Pile Installation</h3>
+        <p>Deep foundation support for poor soil or tight-access sites.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='demolition' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21l6-6m0 0l9-9 3 3-9 9m-3-3l3 3M6 15l3 3"/></svg>
+        <h3>Demolition</h3>
+        <p>Structure and slab removal, cleared and hauled off site.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='site-development' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="10" width="18" height="10"/><path d="M3 10l9-6 9 6"/></svg>
+        <h3>Site Development</h3>
+        <p>Clearing, grading, and utility rough-in for buildable, permitted lots.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='retaining-walls' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V10h4v10M10 20V6h4v14M16 20v-8h4v8"/></svg>
+        <h3>Retaining Walls</h3>
+        <p>Engineered walls built for New England freeze-thaw conditions.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='emergency-utility-repair' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        <h3>Emergency Utility Repair</h3>
+        <p>Round-the-clock response to broken water and sewer lines.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='foundations' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="12" width="16" height="8"/><path d="M4 12l3-8h10l3 8"/></svg>
+        <h3>Foundations</h3>
+        <p>Footing and foundation excavation, poured to spec.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='water-sewer-installations' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h10M4 18h16"/><circle cx="19" cy="12" r="2"/></svg>
+        <h3>Water &amp; Sewer Installations</h3>
+        <p>New service lines installed and tied into municipal systems.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+      <a class="service-tile" href="{% url 'service_detail' slug='ledge-breaking' %}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 21l4-12 4 5 3-9 3 16"/></svg>
+        <h3>Ledge Breaking</h3>
+        <p>Hydraulic hammering and rock removal when the site hits bedrock.</p>
+        <span class="tile-cta">View Details</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="cities" id="cities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Areas we serve</div>
+      <h2>Working across Greater Boston</h2>
+      <p>Based in Boston, on job sites throughout the region.</p>
+    </div>
+    <div class="city-list">
+      <span>West Roxbury</span>
+      <span>Boston</span>
+      <span>Newton</span>
+      <span>Needham</span>
+      <span>Dedham</span>
+      <span>Brookline</span>
+      <span>Roslindale</span>
+      <span>Jamaica Plain</span>
+      <span>Quincy</span>
+      <span>and more</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What clients say</div>
+      <h2>Trusted by contractors and homeowners alike</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p>"JRF came and replaced my main sewer line leaving the house which was cracked. The line ran straight through a landscaped area with mature flowering bushes and a gorgeous Dogwood Tree. They were SO careful and delegate removing and putting back the area you almost could not tell they were even there. This after digging a 10 foot deep trench. I was truly impressed. Very professional and would recommend without hesitation."</p>
+        <div class="who">Valued Customer, Boston</div>
+      </div>
+      <div class="t-card">
+        <p>“We hired JRF Corp to handle the excavation and site work for our new project, and they did a fantastic job. The crew showed up when they said they would and kept the site organized throughout the entire process. They were easy to communicate with and took the time to make sure everything was done properly rather than rushing through the job. The finished site was exactly what we needed and made the rest of the project much easier. Great company to work with and I would definitely use JRF again.”</p>
+        <div class="who">Valued Customer, Roslindale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-wrap-wide">
+    <div>
+      <h2>Get a quote for your site</h2>
+      <p>Tell us what you're working with, we'll get back to you with next steps.</p>
+      <div class="info-rows">
+        <div><span>Phone</span><span>617 983 9701</span></div>
+        <div><span>Email</span><span>info@jrfcorporation.com</span></div>
+        <div><span>Office</span><span>75 Stedman st, Jamaica Plain, MA 02130</span></div>
+        <div><span>Hours</span><span>Mon&ndash;Fri, 7am&ndash;4pm<br>Sat, 8am&ndash;12pm</span></div>
+        <div><span>Emergency</span><span>Response Available</span></div>
+      </div>
+    </div>
+    <form method="post" action="{% url 'enquiry' %}" enctype="multipart/form-data" class="enquiry-form">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+      {% endif %}
+
+      <div class="form-grid">
+        <div class="form-col">
+
+          <div class="field-group">
+            <label>Name <span class="req">*</span></label>
+            {{ form.first_name }}
+            <span class="hint">First</span>
+            {{ form.last_name }}
+            <span class="hint">Last</span>
+            {% if form.first_name.errors or form.last_name.errors %}<div class="field-error">{{ form.first_name.errors }} {{ form.last_name.errors }}</div>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label>Email <span class="req">*</span></label>
+            {{ form.email }}
+            <span class="hint">Email</span>
+            {{ form.confirm_email }}
+            <span class="hint">Confirm Email</span>
+            {% if form.email.errors or form.confirm_email.errors %}<div class="field-error">{{ form.email.errors }} {{ form.confirm_email.errors }}</div>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label for="{{ form.description.id_for_label }}">Brief Description <span class="req">*</span></label>
+            {{ form.description }}
+            <span class="hint">Please provide a brief description of your project.</span>
+            {% if form.description.errors %}<div class="field-error">{{ form.description.errors }}</div>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label for="{{ form.attachment.id_for_label }}">File Upload</label>
+            {{ form.attachment }}
+          </div>
+
+        </div>
+
+        <div class="form-col">
+
+          <div class="field-group">
+            <label>Address <span class="req">*</span></label>
+            {{ form.address_line1 }}
+            <span class="hint">Address Line 1</span>
+            {{ form.city }}
+            <span class="hint">City</span>
+            {{ form.state }}
+            <span class="hint">State</span>
+            {% if form.address_line1.errors or form.city.errors %}<div class="field-error">{{ form.address_line1.errors }} {{ form.city.errors }}</div>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label for="{{ form.phone.id_for_label }}">Phone <span class="req">*</span></label>
+            {{ form.phone }}
+            {% if form.phone.errors %}<div class="field-error">{{ form.phone.errors }}</div>{% endif %}
+          </div>
+
+          <div class="field-group">
+            <label>Reason for your inquiry (Non Emergency)</label>
+            <div class="radio-list">{{ form.reason }}</div>
+            <span class="hint">If this is an emergency water break, please call our line above.</span>
+          </div>
+
+          <div class="field-group">
+            <label for="{{ form.property_type.id_for_label }}">Property Type</label>
+            {{ form.property_type }}
+          </div>
+
+          <div class="field-group">
+            <label for="{{ form.captcha_answer.id_for_label }}">Custom Captcha <span class="req">*</span></label>
+            <span class="hint">What is {{ captcha_a }} + {{ captcha_b }}?</span>
+            {{ form.captcha_answer }}
+            {% if form.captcha_answer.errors %}<div class="field-error">{{ form.captcha_answer.errors }}</div>{% endif %}
+          </div>
+
+        </div>
+      </div>
+
+      <button type="submit">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

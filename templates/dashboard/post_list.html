@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog | JRF Corp | West Roxbury, MA{% endblock %}
+{% block meta_description %}News, project updates, and tips from JRF Corp's excavation and site work crew in West Roxbury, MA.{% endblock %}
+
+{% block content %}
+
+<section class="service-header">
+  <div class="wrap">
+    <div class="service-breadcrumb">
+      <a href="{% url 'home' %}">Home</a> / <span>Blog</span>
+    </div>
+    <h1>JRF Corp Blog</h1>
+    <p class="lead">Project updates, site notes, and news from the crew.</p>
+  </div>
+</section>
+
+<section class="blog-body">
+  <div class="wrap">
+    <div class="blog-grid">
+      {% for post in page_obj %}
+        <a class="blog-card" href="{% url 'post_detail' slug=post.slug %}">
+          {% if post.image %}
+            <div class="blog-card-image">
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            </div>
+          {% endif %}
+          <div class="blog-card-body">
+            <div class="blog-card-date">{{ post.published_at|date:"F j, Y" }}</div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt }}</p>
+          </div>
+        </a>
+      {% empty %}
+        <p>No posts yet, check back soon.</p>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.has_other_pages %}
+      <div class="blog-pagination">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
+        {% endif %}
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

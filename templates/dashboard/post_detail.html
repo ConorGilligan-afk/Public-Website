@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} | JRF Corp Blog{% endblock %}
+{% block meta_description %}{{ post.excerpt }}{% endblock %}
+
+{% block content %}
+
+<section class="service-header">
+  <div class="wrap">
+    <div class="service-breadcrumb">
+      <a href="{% url 'home' %}">Home</a> / <a href="{% url 'post_list' %}">Blog</a> / <span>{{ post.title }}</span>
+    </div>
+    <h1>{{ post.title }}</h1>
+    <p class="lead">
+      {{ post.published_at|date:"F j, Y" }}{% if post.author %} &middot; {{ post.author }}{% endif %}
+    </p>
+  </div>
+</section>
+
+<section class="service-body">
+  <div class="wrap service-body-grid" style="margin-bottom: 50px;">
+    <div class="service-main" style="margin-bottom: 50px;">
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog-post-image">
+      {% endif %}
+      <p>{{ post.content|linebreaksbr }}</p>
+    </div>
+
+    <aside class="svc-aside">
+      <h3>More Posts</h3>
+      <ul class="service-list-links">
+        {% for recent in recent_posts %}
+          <li><a href="{% url 'post_detail' slug=recent.slug %}">{{ recent.title }}</a></li>
+        {% empty %}
+          <li>No other posts yet.</li>
+        {% endfor %}
+      </ul>
+      <div class="svc-aside-contact">
+        <div class="kicker">Need a quote?</div>
+        <p>617 555 0148</p>
+        <p>info@jrfcorporation.com</p>
+      </div>
+      <a class="btn-primary svc-aside-cta" href="{% url 'home' %}#contact">Get a Free Quote</a>
+    </aside>
+  </div>
+</section>
+
+{% endblock %}
