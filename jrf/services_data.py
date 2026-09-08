@@ -13,7 +13,7 @@ SERVICES = [
         "slug": "storm-drainage",
         "icon": "storm-drainage",
         "short_description": "Catch basins, culverts, and drainage systems that move water off your site.",
-        "image": "images/",
+        "image": "images/storm_drainage.jpg",
         "description": (
             "Poor drainage causes more long-term damage to a property than almost anything else, "
             "flooded basements, washed-out grading, cracked foundations. We design and install catch "
@@ -85,7 +85,7 @@ SERVICES = [
         "slug": "emergency-utility-repair",
         "icon": "emergency-repair",
         "short_description": "Round-the-clock response to broken water and sewer lines.",
-        "image": "images/",
+        "image": "images/eur.JPEG",
         "description": (
             "A broken water main or sewer line doesn't wait for business hours, so neither do we. Our "
             "emergency line is staffed 24/7 for exactly this: locating the break, excavating safely "
