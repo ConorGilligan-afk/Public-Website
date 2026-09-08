@@ -143,6 +143,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-CSRF_TRUSTED_ORIGINS = ['https://preview.jrfcorporation.com']
+CSRF_TRUSTED_ORIGINS = ['https://jrfcorporation.com', 'https://www.jrfcorporation.com']
 
 BREVO_API_KEY = env('BREVO_API_KEY')
