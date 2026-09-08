@@ -6,7 +6,6 @@
 
 {% block content %}
 
-{% load static %}
 <section class="hero">
   <div class="hero-video-wrap">
     <video class="hero-video" autoplay muted loop playsinline poster="{% static 'images/hero-poster.jpg' %}">
@@ -44,17 +43,23 @@
     </div>
     <div class="why-grid">
       <div class="why-card">
-        <div class="why-photo"></div>
+        <div class="why-photo">
+          <img src="{% static 'images/direct_com.png' %}" alt="Direct communication">
+        </div>
         <h3>Direct communication</h3>
         <p>You talk to the person running the job, not a call center. We scope it, quote it straight, and keep you posted while it's underway.</p>
       </div>
       <div class="why-card">
-        <div class="why-photo"></div>
+        <div class="why-photo">
+          <img src="{% static 'images/exp_crews.png' %}" alt="Experienced crews">
+        </div>
         <h3>Experienced crews</h3>
         <p>Our operators and site crews handle the equipment and conditions this work actually requires, from ledge to soft soil.</p>
       </div>
       <div class="why-card">
-        <div class="why-photo"></div>
+        <div class="why-photo">
+          <img src="{% static 'images/safety_first.png' %}" alt="Safety first">
+        </div>
         <h3>Safety first</h3>
         <p>Every site runs to strict safety standards, for our crew and everyone around the jobsite while work is underway.</p>
       </div>
@@ -186,10 +191,10 @@
         <p>"JRF came and replaced my main sewer line leaving the house which was cracked. The line ran straight through a landscaped area with mature flowering bushes and a gorgeous Dogwood Tree. They were SO careful and delegate removing and putting back the area you almost could not tell they were even there. This after digging a 10 foot deep trench. I was truly impressed. Very professional and would recommend without hesitation."</p>
         <div class="who">Valued Customer, Boston</div>
       </div>
-      <div class="t-card">
-        <p>“We hired JRF Corp to handle the excavation and site work for our new project, and they did a fantastic job. The crew showed up when they said they would and kept the site organized throughout the entire process. They were easy to communicate with and took the time to make sure everything was done properly rather than rushing through the job. The finished site was exactly what we needed and made the rest of the project much easier. Great company to work with and I would definitely use JRF again.”</p>
-        <div class="who">Valued Customer, Roslindale</div>
-      </div>
+      {% comment %} <div class="t-card">
+        <p></p>
+        <div class="who">Valued Customer, </div>
+      </div> {% endcomment %}
     </div>
   </div>
 </section>

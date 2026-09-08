@@ -391,3 +391,8 @@ footer{background:var(--teal-dark); color:#B7C1BE; padding:56px 0 30px; font-siz
   from{opacity:0; transform:translateY(-8px);}
   to{opacity:1; transform:translateY(0);}
 }
+
+.why-photo{
+  height:180px; border-radius:4px; margin-bottom:20px; overflow:hidden;
+}
+.why-photo img{width:100%; height:100%; object-fit:cover; display:block;}

@@ -13,6 +13,7 @@ SERVICES = [
         "slug": "storm-drainage",
         "icon": "storm-drainage",
         "short_description": "Catch basins, culverts, and drainage systems that move water off your site.",
+        "image": "images/",
         "description": (
             "Poor drainage causes more long-term damage to a property than almost anything else, "
             "flooded basements, washed-out grading, cracked foundations. We design and install catch "
@@ -27,6 +28,7 @@ SERVICES = [
         "slug": "helical-pile-installation",
         "icon": "helical-pile",
         "short_description": "Deep foundation support for poor soil or tight-access sites.",
+        "image": "images/",
         "description": (
             "When soil conditions won't support a standard footing, or when equipment access is too "
             "tight for conventional foundation work, helical piles give you a deep, mechanically "
@@ -41,6 +43,7 @@ SERVICES = [
         "slug": "demolition",
         "icon": "demolition",
         "short_description": "Structure and slab removal, cleared and hauled off site.",
+        "image": "images/",
         "description": (
             "From a single slab to a full structure, we handle demolition and complete removal of the "
             "debris, leaving the lot cleared and ready for what's next. That includes coordinating any "
@@ -54,6 +57,7 @@ SERVICES = [
         "slug": "site-development",
         "icon": "site-development",
         "short_description": "Clearing, grading, and utility rough-in for buildable, permitted lots.",
+        "image": "images/site_dev.JPG",
         "description": (
             "Turning raw or undeveloped land into a buildable lot means clearing, grading to the "
             "approved plan, and roughing in the utility connections a future structure will need. We "
@@ -67,6 +71,7 @@ SERVICES = [
         "slug": "retaining-walls",
         "icon": "retaining-walls",
         "short_description": "Engineered walls built for New England freeze-thaw conditions.",
+        "image": "images/retaining_wall.JPG",
         "description": (
             "A retaining wall that isn't built for local frost conditions will heave, crack, or lean "
             "within a few winters. We build walls with proper drainage behind them and footings set "
@@ -80,6 +85,7 @@ SERVICES = [
         "slug": "emergency-utility-repair",
         "icon": "emergency-repair",
         "short_description": "Round-the-clock response to broken water and sewer lines.",
+        "image": "images/",
         "description": (
             "A broken water main or sewer line doesn't wait for business hours, so neither do we. Our "
             "emergency line is staffed 24/7 for exactly this: locating the break, excavating safely "
@@ -93,6 +99,7 @@ SERVICES = [
         "slug": "foundations",
         "icon": "foundations",
         "short_description": "Footing and foundation excavation, poured to spec.",
+        "image": "images/",
         "description": (
             "Foundation work is the one part of a project everything else depends on, so it's poured "
             "exactly to spec, at the right depth, on properly compacted and inspected subgrade. We "
@@ -106,7 +113,7 @@ SERVICES = [
         "slug": "water-sewer-installations",
         "icon": "water-sewer",
         "short_description": "New service lines installed and tied into municipal systems.",
-        "image": "images/ws_pic.jpg",
+        "image": "images/ws_pic.JPG",
         "description": (
             "New construction and additions often need new water or sewer service lines run and "
             "properly tied into the municipal system. We handle the excavation, pipe installation, and "
