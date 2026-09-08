@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -133,22 +133,16 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        "OPTIONS": {
-            "host": "smtp.sendgrid.net",
-            "port": 587,
-            "use_tls": True,
-            "username": "apikey",  # literally the string "apikey" for SendGrid
-            "password": "your-sendgrid-api-key",  # move to an env var, don't commit this
-        },
-    },
-}
- 
-DEFAULT_FROM_EMAIL = 'noreply@jrfcorporation.com'
+BREVO_API_KEY = env('BREVO_API_KEY')
+
+DEFAULT_FROM_EMAIL = 'mail@jrfcorporation.com'
 ENQUIRY_NOTIFY_EMAIL = 'info@jrfcorporation.com'  # where enquiries get sent
  
 # File uploads (for the enquiry attachment field)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = ['https://preview.jrfcorporation.com']
+
+BREVO_API_KEY = env('BREVO_API_KEY')

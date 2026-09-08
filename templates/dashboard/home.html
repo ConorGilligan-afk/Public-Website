@@ -139,23 +139,38 @@
 </section>
 
 <section class="cities" id="cities">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Areas we serve</div>
-      <h2>Working across Greater Boston</h2>
-      <p>Based in Boston, on job sites throughout the region.</p>
+  <div class="wrap cities-grid">
+    <div class="cities-text">
+      <div class="section-head">
+        <div class="kicker">Areas we serve</div>
+        <h2>Working across Greater Boston</h2>
+        <p>Based in Boston, on job sites throughout the region.</p>
+      </div>
+      <div class="city-list">
+        <span>West Roxbury</span>
+        <span>Boston</span>
+        <span>Newton</span>
+        <span>Needham</span>
+        <span>Dedham</span>
+        <span>Brookline</span>
+        <span>Roslindale</span>
+        <span>Jamaica Plain</span>
+        <span>Quincy</span>
+        <span>Somerville</span>
+        <span>Cambridge</span>
+        <span>Weymouth</span>
+        <span>Norwood</span>
+        <span>Canton</span>
+        <span>and more</span>
+      </div>
     </div>
-    <div class="city-list">
-      <span>West Roxbury</span>
-      <span>Boston</span>
-      <span>Newton</span>
-      <span>Needham</span>
-      <span>Dedham</span>
-      <span>Brookline</span>
-      <span>Roslindale</span>
-      <span>Jamaica Plain</span>
-      <span>Quincy</span>
-      <span>and more</span>
+    <div class="cities-map">
+      <iframe
+        src="https://maps.google.com/maps?q=Boston,%20MA&t=&z=10&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 </section>
@@ -181,6 +196,16 @@
 
 <section class="contact" id="contact">
   <div class="wrap contact-wrap-wide">
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="form-success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
     <div>
       <h2>Get a quote for your site</h2>
       <p>Tell us what you're working with, we'll get back to you with next steps.</p>
@@ -254,7 +279,7 @@
           </div>
 
           <div class="field-group">
-            <label>Reason for your inquiry (Non Emergency)</label>
+            <label>Reason for your inquiry (Non Emergency) <span class="req">*</span></label>
             <div class="radio-list">{{ form.reason }}</div>
             <span class="hint">If this is an emergency water break, please call our line above.</span>
           </div>

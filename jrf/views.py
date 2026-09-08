@@ -7,6 +7,11 @@ from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.urls import reverse
+import base64
+import requests
+from django.conf import settings
+
  
 from .forms import EnquiryForm
 from .models import Post
@@ -53,27 +58,47 @@ def enquiry_submit(request):
         enquiry = form.save(commit=False)
         enquiry.save()
 
-        email = EmailMessage(
-            subject=f"New Enquiry: {enquiry.get_reason_display()}",
-            body=(
-                f"Name: {enquiry.first_name} {enquiry.last_name}\n"
-                f"Email: {enquiry.email}\n"
-                f"Phone: {enquiry.phone}\n"
-                f"Address: {enquiry.address_line1}, {enquiry.city}, {enquiry.state}\n"
-                f"Property Type: {enquiry.get_property_type_display()}\n"
-                f"Reason: {enquiry.get_reason_display()}\n\n"
-                f"Description:\n{enquiry.description}"
+        payload = {
+            "sender": {"name": "JRF Corp Website", "email": settings.DEFAULT_FROM_EMAIL},
+            "to": [{"email": settings.ENQUIRY_NOTIFY_EMAIL}],
+            "replyTo": {"email": enquiry.email},
+            "subject": f"New Enquiry: {enquiry.get_reason_display()}",
+            "htmlContent": (
+                f"<p><strong>Name:</strong> {enquiry.first_name} {enquiry.last_name}</p>"
+                f"<p><strong>Email:</strong> {enquiry.email}</p>"
+                f"<p><strong>Phone:</strong> {enquiry.phone}</p>"
+                f"<p><strong>Address:</strong> {enquiry.address_line1}, {enquiry.city}, {enquiry.state}</p>"
+                f"<p><strong>Property Type:</strong> {enquiry.get_property_type_display()}</p>"
+                f"<p><strong>Reason:</strong> {enquiry.get_reason_display()}</p>"
+                f"<p><strong>Description:</strong><br>{enquiry.description}</p>"
             ),
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[settings.ENQUIRY_NOTIFY_EMAIL],
-            reply_to=[enquiry.email],
-        )
+        }
+
         if enquiry.attachment:
-            email.attach_file(enquiry.attachment.path)
-        email.send(fail_silently=False)
+            with open(enquiry.attachment.path, 'rb') as f:
+                encoded = base64.b64encode(f.read()).decode('utf-8')
+            payload["attachment"] = [{
+                "content": encoded,
+                "name": enquiry.attachment.name.split('/')[-1],
+            }]
+
+        try:
+            response = requests.post(
+                "https://api.brevo.com/v3/smtp/email",
+                headers={
+                    "accept": "application/json",
+                    "api-key": settings.BREVO_API_KEY,
+                    "content-type": "application/json",
+                },
+                json=payload,
+                timeout=10,
+            )
+            response.raise_for_status()
+        except requests.RequestException as e:
+            print(f"Enquiry email failed to send: {e}")
 
         messages.success(request, "Thanks, we've received your enquiry and will be in touch shortly.")
-        return redirect('home')
+        return redirect(reverse('home') + '#contact')
 
     # invalid submission: refresh the captcha and re-render with errors
     a, b = _new_captcha(request)

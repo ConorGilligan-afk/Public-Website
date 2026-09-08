@@ -32,8 +32,11 @@ class EnquiryForm(forms.ModelForm):
         self.captcha_b = captcha_b
         if captcha_a is not None and captcha_b is not None:
             self.fields['captcha_answer'].label = f"What is {captcha_a} + {captcha_b}?"
-        # field ordering doesn't put confirm_email next to email automatically
-        # in Meta.fields, so reorder explicitly for template iteration if needed
+
+        # Remove Django's auto-inserted blank choice so only real options show
+        self.fields['reason'].choices = Enquiry.REASON_CHOICES
+        self.fields['reason'].widget = forms.RadioSelect(choices=Enquiry.REASON_CHOICES)
+        
         self.order_fields([
             'first_name', 'last_name',
             'address_line1', 'city', 'state',
