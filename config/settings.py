@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
 ]
 
+UNFOLD = {
+    "STYLES": [
+        lambda request: static("css/admin-overrides.css"),
+    ],
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

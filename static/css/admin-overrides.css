@@ -1,0 +1,9 @@
+#content input[type="text"],
+#content input[type="email"],
+#content input[type="number"],
+#content input[type="url"],
+#content input[type="tel"],
+#content textarea,
+#content select {
+  border: 1px solid #d1d5db !important;
+}
