@@ -14,7 +14,7 @@ from django.conf import settings
 
  
 from .forms import EnquiryForm
-from .models import Post
+from .models import Post, GalleryImage
 from .services_data import SERVICES, get_service
 
 def _new_captcha(request):
@@ -128,5 +128,17 @@ def post_detail(request, slug):
     return render(request, 'dashboard/post_detail.html', {
         'post': post,
         'recent_posts': recent_posts,
+    })
+
+
+def gallery(request):
+    images = GalleryImage.objects.all()
+    category = request.GET.get('category')
+    if category:
+        images = images.filter(category=category)
+    return render(request, 'dashboard/gallery.html', {
+        'images': images,
+        'categories': GalleryImage.CATEGORY_CHOICES,
+        'active_category': category,
     })
  

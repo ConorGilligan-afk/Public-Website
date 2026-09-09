@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gallery | JRF Corp | West Roxbury, MA{% endblock %}
+{% block meta_description %}Photos from JRF Corp's excavation and site work jobs across Greater Boston.{% endblock %}
+
+{% block content %}
+
+<section class="service-header">
+  <div class="wrap">
+    <div class="service-breadcrumb">
+      <a href="{% url 'home' %}">Home</a> / <span>Gallery</span>
+    </div>
+    <h1>Our Work</h1>
+    <p class="lead">Photos from recent jobs across Greater Boston.</p>
+  </div>
+</section>
+
+<section class="gallery-body">
+  <div class="wrap">
+
+    <div class="gallery-filters">
+      <a href="{% url 'gallery' %}" class="gallery-filter-pill {% if not active_category %}active{% endif %}">All</a>
+      {% for value, label in categories %}
+        <a href="?category={{ value }}" class="gallery-filter-pill {% if active_category == value %}active{% endif %}">{{ label }}</a>
+      {% endfor %}
+    </div>
+
+    <div class="gallery-grid">
+      {% for photo in images %}
+        <div class="gallery-item" onclick="openLightbox('{{ photo.image.url }}', '{{ photo.caption|escapejs }}')">
+          <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:'JRF Corp job site photo' }}" loading="lazy">
+          {% if photo.caption %}
+            <div class="gallery-caption">{{ photo.caption }}</div>
+          {% endif %}
+        </div>
+      {% empty %}
+        <p>No photos in this category yet.</p>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+
+<script>
+function openLightbox(src, caption) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-caption').textContent = caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+{% endblock %}

@@ -86,4 +86,31 @@ class Post(models.Model):
  
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'slug': self.slug})
+    
+ 
+class GalleryImage(models.Model):
+    CATEGORY_CHOICES = [
+        ('storm-drainage', 'Storm Drainage'),
+        ('helical-pile-installation', 'Helical Pile Installation'),
+        ('demolition', 'Demolition'),
+        ('site-development', 'Site Development'),
+        ('retaining-walls', 'Retaining Walls'),
+        ('emergency-utility-repair', 'Emergency Utility Repair'),
+        ('foundations', 'Foundations'),
+        ('water-sewer-installations', 'Water & Sewer Installations'),
+        ('ledge-breaking', 'Ledge Breaking'),
+        ('general', 'General / Other'),
+    ]
+ 
+    caption = models.CharField(max_length=200, blank=True, help_text="Optional, shown under the photo")
+    category = models.CharField(max_length=40, choices=CATEGORY_CHOICES, default='general')
+    image = models.ImageField(upload_to='gallery/%Y/%m/')
+    order = models.PositiveIntegerField(default=0)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+ 
+    class Meta:
+        ordering = ['order', '-uploaded_at']
+ 
+    def __str__(self):
+        return self.caption or f"Gallery photo #{self.pk}"
  

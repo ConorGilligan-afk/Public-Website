@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enquiry, Service, Post
+from .models import Enquiry, Service, Post, GalleryImage
 
 
 @admin.register(Service)
@@ -21,3 +21,10 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('is_published',)
     prepopulated_fields = {'slug': ('title',)}
     ordering = ('-published_at',)
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+    list_display = ('caption', 'category', 'order', 'uploaded_at')
+    list_filter = ('category',)
+    ordering = ('order', '-uploaded_at')
+ 
