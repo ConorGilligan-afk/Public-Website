@@ -86,6 +86,14 @@ DATABASES = {
     }
 }
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
@@ -136,8 +144,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 BREVO_API_KEY = env('BREVO_API_KEY')
 
 DEFAULT_FROM_EMAIL = 'mail@jrfcorporation.com'
-ENQUIRY_NOTIFY_EMAIL = 'info@jrfcorporation.com'  # where enquiries get sent
- 
+ENQUIRY_NOTIFY_EMAIL = 'info@jrfcorporation.com'  
 # File uploads (for the enquiry attachment field)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
