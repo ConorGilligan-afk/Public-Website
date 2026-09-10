@@ -31,14 +31,21 @@
 <header class="main">
   <div class="wrap nav">
     <a href="{% url 'home' %}" class="logo">JRF <span>Corp</span></a>
-    <nav class="links">
-      <a href="{% url 'home' %}#services">Services</a>
-      <a href="{% url 'home' %}#why">Why Us</a>
-      <a href="{% url 'home' %}#cities">Areas We Serve</a>
-      <a href="{% url 'post_list' %}">Blog</a>
-      <a href="{% url 'gallery' %}">Gallery</a>
-      <a href="{% url 'home' %}#contact">Contact</a>
-    </nav>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" onclick="toggleNavDropdown()">
+        <span>Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown-panel" id="navDropdownPanel">
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="{% url 'home' %}#services">Services</a>
+        <a href="{% url 'home' %}#why">Why Us</a>
+        <a href="{% url 'home' %}#cities">Areas We Serve</a>
+        <a href="{% url 'post_list' %}">Blog</a>
+        <a href="{% url 'gallery' %}">Gallery</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
+      </div>
+    </div>
     <a class="nav-cta" href="{% url 'home' %}#contact">Get a Free Quote</a>
   </div>
 </header>
@@ -86,5 +93,18 @@
 </footer>
 
 {% block extra_scripts %}{% endblock %}
+<script>
+function toggleNavDropdown() {
+  document.getElementById('navDropdownPanel').classList.toggle('open');
+  document.querySelector('.nav-dropdown-trigger').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const dropdown = document.querySelector('.nav-dropdown');
+  if (dropdown && !dropdown.contains(e.target)) {
+    document.getElementById('navDropdownPanel').classList.remove('open');
+    document.querySelector('.nav-dropdown-trigger').classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>

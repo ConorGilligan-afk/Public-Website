@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | JRF Corp | West Roxbury, MA{% endblock %}
+{% block meta_description %}JRF Corp is a West Roxbury, MA excavation and site work contractor, celebrating 30 years serving Greater Boston.{% endblock %}
+
+{% block content %}
+
+<section class="service-header">
+  <div class="wrap">
+    <div class="service-breadcrumb">
+      <a href="{% url 'home' %}">Home</a> / <span>About Us</span>
+    </div>
+    <h1>About JRF Corp</h1>
+    <p class="lead">30 years of excavation and site work, built on doing the job right the first time.</p>
+  </div>
+</section>
+
+<section class="about-story">
+  <div class="wrap about-story-grid">
+    <div class="about-story-text">
+      <div class="kicker">Our Story</div>
+      <h2>Three decades in Greater Boston</h2>
+      <p>JRF Corp has been handling excavation and site work across Greater Boston since 1994. What started as a small operation has grown into a full-service excavation contractor, but the way we work hasn't changed: show up, do the job right, and stand behind it.</p>
+      <p>We've built our reputation on the work nobody sees once a project is finished, the drainage, the footings, the utility lines, done correctly so nothing underground becomes a problem above it. That reputation is what keeps contractors, homeowners, and municipalities calling us back.</p>
+      <a class="btn-primary" href="{% url 'home' %}#contact">Get a Free Quote</a>
+    </div>
+    <div class="about-story-stats">
+      <div class="stat"><div class="num">30</div><div class="label">Years in business</div></div>
+      <div class="stat"><div class="num">MA</div><div class="label">Licensed &amp; insured</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="label">Emergency response</div></div>
+      <div class="stat"><div class="num">West Roxbury</div><div class="label">Based &amp; operating</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="values">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What we stand for</div>
+      <h2>The way we work hasn't changed</h2>
+      <p>A few things that have stayed constant since 1994.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Direct communication</h3>
+        <p>You talk to the person running the job, not a call center. We scope it, quote it straight, and keep you posted while it's underway.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Experienced crews</h3>
+        <p>Our operators and site crews handle the equipment and conditions this work actually requires, from ledge to soft soil.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-photo"></div>
+        <h3>Safety first</h3>
+        <p>Every site runs to strict safety standards, for our crew and everyone around the jobsite while work is underway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-cta">
+  <div class="wrap about-cta-inner">
+    <h2>Have a project in mind?</h2>
+    <p>Tell us what you're working with, we'll get back to you with next steps.</p>
+    <a class="btn-primary" href="{% url 'home' %}#contact">Get a Free Quote</a>
+  </div>
+</section>
+
+{% endblock %}

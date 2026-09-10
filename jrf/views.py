@@ -133,12 +133,9 @@ def post_detail(request, slug):
 
 def gallery(request):
     images = GalleryImage.objects.all()
-    category = request.GET.get('category')
-    if category:
-        images = images.filter(category=category)
     return render(request, 'dashboard/gallery.html', {
         'images': images,
-        'categories': GalleryImage.CATEGORY_CHOICES,
-        'active_category': category,
     })
- 
+
+def about(request):
+    return render(request, 'dashboard/about.html')

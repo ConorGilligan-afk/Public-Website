@@ -72,7 +72,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     author = models.CharField(max_length=100, blank=True, help_text="Staff name to show as the author")
-    excerpt = models.CharField(max_length=250, help_text="Short summary shown on the blog list page")
+    excerpt = models.CharField(max_length=250, help_text="Short summary shown on the blog list page, works as meta description for Search Engine Optimisation. Make it a proper sentence but try to catch as many keywords as possible")
     content = models.TextField(help_text="Main body of the post. Line breaks are preserved.")
     image = models.ImageField(upload_to='blog/%Y/%m/', blank=True, null=True)
     is_published = models.BooleanField(default=True)
@@ -89,21 +89,7 @@ class Post(models.Model):
     
  
 class GalleryImage(models.Model):
-    CATEGORY_CHOICES = [
-        ('storm-drainage', 'Storm Drainage'),
-        ('helical-pile-installation', 'Helical Pile Installation'),
-        ('demolition', 'Demolition'),
-        ('site-development', 'Site Development'),
-        ('retaining-walls', 'Retaining Walls'),
-        ('emergency-utility-repair', 'Emergency Utility Repair'),
-        ('foundations', 'Foundations'),
-        ('water-sewer-installations', 'Water & Sewer Installations'),
-        ('ledge-breaking', 'Ledge Breaking'),
-        ('general', 'General / Other'),
-    ]
- 
     caption = models.CharField(max_length=200, blank=True, help_text="Optional, shown under the photo")
-    category = models.CharField(max_length=40, choices=CATEGORY_CHOICES, default='general')
     image = models.ImageField(upload_to='gallery/%Y/%m/')
     order = models.PositiveIntegerField(default=0)
     uploaded_at = models.DateTimeField(auto_now_add=True)
