@@ -90,6 +90,7 @@ class Post(models.Model):
  
 class GalleryImage(models.Model):
     caption = models.CharField(max_length=200, blank=True, help_text="Optional, shown under the photo")
+    is_historical = models.BooleanField(default=False, help_text="Check for old/archival company photos, shown on the About page")
     image = models.ImageField(upload_to='gallery/%Y/%m/')
     order = models.PositiveIntegerField(default=0)
     uploaded_at = models.DateTimeField(auto_now_add=True)

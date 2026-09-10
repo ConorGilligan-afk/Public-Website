@@ -24,6 +24,7 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
-    list_display = ('caption', 'order', 'uploaded_at')
+    list_display = ('caption', 'is_historical', 'order', 'uploaded_at')
+    list_filter = ('is_historical',)
     ordering = ('order', '-uploaded_at')
  

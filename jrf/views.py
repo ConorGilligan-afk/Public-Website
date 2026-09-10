@@ -138,4 +138,7 @@ def gallery(request):
     })
 
 def about(request):
-    return render(request, 'dashboard/about.html')
+    historical_photos = GalleryImage.objects.filter(is_historical=True)
+    return render(request, 'dashboard/about.html', {
+        'historical_photos': historical_photos,
+    })
