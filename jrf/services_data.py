@@ -28,7 +28,7 @@ SERVICES = [
         "slug": "helical-pile-installation",
         "icon": "helical-pile",
         "short_description": "Deep foundation support for poor soil or tight-access sites.",
-        "image": "images/",
+        "image": "images/hellical_pipe.JPG",
         "description": (
             "When soil conditions won't support a standard footing, or when equipment access is too "
             "tight for conventional foundation work, helical piles give you a deep, mechanically "
