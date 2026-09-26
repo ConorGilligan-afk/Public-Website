@@ -222,7 +222,7 @@
         <div><span>Emergency</span><span>Response Available</span></div>
       </div>
     </div>
-    <form method="post" action="{% url 'enquiry' %}" enctype="multipart/form-data" class="enquiry-form">
+    <form method="post" action="{% url 'enquiry' %}" enctype="multipart/form-data" class="enquiry-form" id="enquiry-form">
       {% csrf_token %}
 
       {% if form.non_field_errors %}
@@ -239,6 +239,11 @@
             {{ form.last_name }}
             <span class="hint">Last</span>
             {% if form.first_name.errors or form.last_name.errors %}<div class="field-error">{{ form.first_name.errors }} {{ form.last_name.errors }}</div>{% endif %}
+          </div>
+
+          <div style="position: absolute; left: -9999px;" aria-hidden="true">
+              <label for="website">Leave this field blank</label>
+              <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
           </div>
 
           <div class="field-group">
@@ -304,9 +309,15 @@
         </div>
       </div>
 
-      <button type="submit">Send Enquiry</button>
+      <button type="submit" id="enquiry-submit-btn">Send Enquiry</button>
     </form>
   </div>
 </section>
-
+<script>
+  document.getElementById('enquiry-form').addEventListener('submit', function() {
+      const btn = document.getElementById('enquiry-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+  });
+</script>
 {% endblock %}

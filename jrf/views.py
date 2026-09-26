@@ -7,14 +7,13 @@ from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from datetime import timedelta
 from django.urls import reverse
 import base64
 import requests
 from django.conf import settings
-
- 
 from .forms import EnquiryForm
-from .models import Post, GalleryImage
+from .models import Post, GalleryImage, Enquiry
 from .services_data import SERVICES, get_service
 
 def _new_captcha(request):
@@ -49,6 +48,17 @@ def service_detail(request, slug):
 def enquiry_submit(request):
     if request.method != 'POST':
         return redirect('home')
+
+    if request.POST.get('website'):
+        return redirect(reverse('home') + '#contact')
+
+    recent_duplicate_count = Enquiry.objects.filter(
+        email=request.POST.get('email'),
+        submitted_at__gte=timezone.now() - timedelta(hours=1)
+    ).count()
+
+    if recent_duplicate_count >= 3:
+        return redirect(reverse('home') + '#contact')
 
     captcha_a = request.session.get('captcha_a')
     captcha_b = request.session.get('captcha_b')
