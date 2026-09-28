@@ -224,6 +224,7 @@
     </div>
     <form method="post" action="{% url 'enquiry' %}" enctype="multipart/form-data" class="enquiry-form" id="enquiry-form">
       {% csrf_token %}
+      <input type="hidden" name="form_token" id="form_token" value="">
 
       {% if form.non_field_errors %}
         <div class="form-error">{{ form.non_field_errors }}</div>
@@ -299,13 +300,6 @@
             {{ form.property_type }}
           </div>
 
-          <div class="field-group">
-            <label for="{{ form.captcha_answer.id_for_label }}">Custom Captcha <span class="req">*</span></label>
-            <span class="hint">What is {{ captcha_a }} + {{ captcha_b }}?</span>
-            {{ form.captcha_answer }}
-            {% if form.captcha_answer.errors %}<div class="field-error">{{ form.captcha_answer.errors }}</div>{% endif %}
-          </div>
-
         </div>
       </div>
 
@@ -314,6 +308,23 @@
   </div>
 </section>
 <script>
+  (function () {
+      var token = "{{ form_token|escapejs }}";
+      var field = document.getElementById('form_token');
+      var events = ['keydown', 'input', 'pointerdown', 'touchstart'];
+
+      function fill() {
+          field.value = token;
+          events.forEach(function (e) {
+              document.removeEventListener(e, fill);
+          });
+      }
+
+      events.forEach(function (e) {
+          document.addEventListener(e, fill);
+      });
+  })();
+
   document.getElementById('enquiry-form').addEventListener('submit', function() {
       const btn = document.getElementById('enquiry-submit-btn');
       btn.disabled = true;

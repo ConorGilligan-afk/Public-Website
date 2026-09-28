@@ -44,7 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'jrf.apps.JrfConfig',
     'django_cleanup.apps.CleanupConfig',
+    'captcha',
 ]
+
+
+CAPTCHA_LENGTH = 6
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots', 'captcha.helpers.noise_arcs')
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+
 
 UNFOLD = {
     "STYLES": [

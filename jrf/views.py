@@ -15,22 +15,15 @@ from django.conf import settings
 from .forms import EnquiryForm
 from .models import Post, GalleryImage, Enquiry
 from .services_data import SERVICES, get_service
-
-def _new_captcha(request):
-    a, b = random.randint(1, 9), random.randint(1, 9)
-    request.session['captcha_a'] = a
-    request.session['captcha_b'] = b
-    return a, b
-
+from django.core import signing
+import time
 
 def home(request):
-    a, b = _new_captcha(request)
     form = EnquiryForm()
     return render(request, 'dashboard/home.html', {
         'form': form,
-        'captcha_a': a,
-        'captcha_b': b,
         'services': SERVICES,
+        'form_token': make_form_token(),
     })
 
 
@@ -60,9 +53,9 @@ def enquiry_submit(request):
     if recent_duplicate_count >= 3:
         return redirect(reverse('home') + '#contact')
 
-    captcha_a = request.session.get('captcha_a')
-    captcha_b = request.session.get('captcha_b')
-    form = EnquiryForm(request.POST, request.FILES, captcha_a=captcha_a, captcha_b=captcha_b)
+    form = EnquiryForm(request.POST, request.FILES)
+    if not check_form_token(request.POST.get('form_token', '')):
+        form.add_error(None, 'Please wait a moment and try submitting again.')
 
     if form.is_valid():
         enquiry = form.save(commit=False)
@@ -110,12 +103,9 @@ def enquiry_submit(request):
         messages.success(request, "Thanks, we've received your enquiry and will be in touch shortly.")
         return redirect(reverse('home') + '#contact')
 
-    # invalid submission: refresh the captcha and re-render with errors
-    a, b = _new_captcha(request)
     return render(request, 'dashboard/home.html', {
         'form': form,
-        'captcha_a': a,
-        'captcha_b': b,
+        'form_token': make_form_token(),
         'services': SERVICES,
     })
 
@@ -152,3 +142,13 @@ def about(request):
     return render(request, 'dashboard/about.html', {
         'historical_photos': historical_photos,
     })
+
+def make_form_token():
+    return signing.dumps({'t': time.time()})
+
+def check_form_token(token, min_seconds=5, max_seconds=3600):
+    try:
+        data = signing.loads(token, max_age=max_seconds)
+    except signing.BadSignature:
+        return False
+    return (time.time() - data['t']) >= min_seconds
